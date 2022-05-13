@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div id="header">
+        <h1 id="page_name">Coding Dojo Wall</h1>
+        <div id="header_links">
+            <h2>Welcome, {{session.first_name}}</h2>
+            <a id = "logout" href="/log-out">Log Out</a>
+        </div>
+    </div>
+    <div class="container"> 
+        <div class="form_container">
+            <h2 class="dashboard_h2">{{session.message_count}} Messages for You</h2>
+                {% for one_message in all_messages.message_list %}
+                <h3>{{one_message.sender_info.first_name}} said ({{one_message.time_elapsed}})</h3>
+                <div class="user_messages">
+                    <p>{{one_message.message}}</p>
+                    <a href="/delete/{{one_message.id}}">Delete</a>
+                </div>
+                {% endfor %}
+        </div>
+        <div class="form_container">
+            <h2 class="dashboard_h2">Send Messages</h2>
+            {% with messages = get_flashed_messages(category_filter=["message error"]) %}
+                {% if messages %} 
+                    {% for message in messages %} 
+                        <p class="validation">{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% for one_user in all_users %}
+            <form class="message_form" action="/send_message" method="POST">
+                <input type="hidden" name="receiver" value="{{one_user.id}}"> 
+                <label for="message" class="username">{{one_user.first_name}} {{one_user.last_name}}</label>
+                <textarea id="message" name="message"></textarea> 
+                <input type="submit" class="send_message"value="Send Message"> 
+            </form> 
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

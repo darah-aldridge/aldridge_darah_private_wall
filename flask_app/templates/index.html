@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Private Wall</title>
+</head>
+<body>
+    <h1>Register or Login</h1>
+    <div class="container">
+        <div class="form_container">
+            <h2>Register</h2>
+            <p>Register below for an account!</p>
+            <form action='/register' method='post'>
+                <label for="first_name" class="form_field">First Name:</label>
+                <input type="text" name="first_name">
+                <label for="last_name" class="form_field">Last Name:</label>
+                <input type="text" name="last_name">
+                <label for="email" class="form_field">Email:</label>
+                <input type="text" name="email">
+                <label for="password" class="form_field">Password:</label>
+                <input type="password" name="password">
+                <label for="confirm_password" class="form_field">Confirm Password:</label>
+                <input type="password" name="confirm_password">
+                <input type="submit" name="register" value="Register" id="register">
+                {% with messages = get_flashed_messages(category_filter=["register error"]) %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <p class="validation">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+        <div class="form_container">
+            <h2>Login</h2>
+            <p>Already have an account? Login below!</p>
+            <form action='/login' method='post'>
+                <label for="email" class="form_field">Email:</label>
+                <input type="text" name="email">
+                <label for="password" class="form_field">Password:</label>
+                <input type="password" name="password">
+                <input type="submit" name="login" value="Login" id="login">
+                {% with messages = get_flashed_messages(category_filter=["login error"]) %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        {% for login_messages in messages %}            <!-- loop through the messages -->
+                            <p class="validation">{{login_messages}}</p>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>

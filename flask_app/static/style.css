@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;600&display=swap');
+
+/* typography */
+a, p, h1, h2, h3, h4, h5, h6, .form_field, input[type=text], input[type=submit], input[type=password], .username, text{
+    font-family: 'Poppins', sans-serif;
+}
+input[type=submit], #logout, .username{
+    font-weight: 600;
+    font-size: 18px;
+}
+.validation{
+    color: red;
+}
+#logout{
+    text-decoration: none;
+    color: black;
+    background-color: rgb(100, 223, 159);
+    text-align: center;
+    padding: 5px;
+    border-radius: 15px;
+    text-transform: uppercase;
+}
+
+.dashboard_h2{
+    margin-bottom: 1em;
+}
+
+/* layout */
+*{
+    margin: 0px;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0em;
+
+}
+
+.container{
+    display: flex;
+    /* grid-template-columns: 1fr 1fr;
+    gap: 1em; */
+    flex-direction: row;
+    width: 75%;
+}
+
+.form_container{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(236, 236, 236);
+    width: 100%;
+    padding: 2em;
+    margin: 25px;
+    border-radius: 15px;
+}
+
+.form_field{
+    padding: 10px 0px;
+}
+
+input[type=text], input[type=password] {
+    padding: 10px 5px;
+    border: 0px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+textarea {
+    padding: 10px 5px;
+    border: 0px;
+    border-radius: 15px;
+    /* margin-bottom: 20px; */
+}
+#register, #login{
+    margin-top: 30px;
+    padding: 10px;
+    border: 0px;
+    border-radius: 15px;
+}
+.send_message{
+    padding: 10px;
+    border: 0px;
+    border-radius: 15px;
+}
+#register, .send_message{
+    background-color: rgb(114, 212, 212);
+}
+#login{
+    background-color: rgb(100, 223, 159);
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+#header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border-bottom: 0.25em solid  black ;
+    padding-bottom: 1em;
+}
+
+#header_links{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1em;
+    align-items: center;
+    /* margin-right: 10em; */
+}
+
+
+.message_form{
+    display: grid;
+    grid-template-columns: 2fr 5fr 1fr;
+    align-items:flex-start;
+    gap: 1em;
+    margin: 1em 0px;
+}
+.user_messages{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    align-items:flex-start;
+    gap: 1em;
+}
+
